@@ -6,11 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MaterialModule } from './shared/material.module';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'contactmanager', loadChildren: () => import('./contactmanager/contactmanager.module').then(m => m.ContactmanagerModule) },
@@ -27,9 +24,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    MatButtonModule,
-    MatIconModule,
-    MatCheckboxModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
