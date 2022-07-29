@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
