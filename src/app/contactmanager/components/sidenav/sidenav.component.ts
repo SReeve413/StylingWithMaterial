@@ -1,4 +1,4 @@
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
@@ -17,9 +17,9 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall: boolean;
 
-  users: Observable<User[]>;
-  isDarkTheme: boolean = false;
-  dir: string = 'ltr';
+  // users: Observable<User[]>;
+  // isDarkTheme: boolean = false;
+  // dir: string = 'ltr';
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -28,29 +28,34 @@ export class SidenavComponent implements OnInit {
 
   @ViewChild(MatSidenav) sidenav: MatSidenav;
 
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-  }
+  // toggleTheme() {
+  //   this.isDarkTheme = !this.isDarkTheme;
+  // }
 
-  toggleDir() {
-    this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
-  }
+  // toggleDir() {
+  //   this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
+  // }
 
   ngOnInit(): void {
     this.breakpointObserver
-      .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
-      .subscribe((state: BreakpointState) => {
-        this.isScreenSmall = state.matches;
-      });
+    .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
+    .subscribe((state: BreakpointState)=> {
+      this.isScreenSmall = state.matches;
+    })
+    // this.breakpointObserver
+    //   .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
+    //   .subscribe((state: BreakpointState) => {
+    //     this.isScreenSmall = state.matches;
+    //   });
 
-    this.users = this.userService.users;
-    this.userService.loadAll();
+    // this.users = this.userService.users;
+    // this.userService.loadAll();
 
-    this.router.events.subscribe(() => {
-      if (this.isScreenSmall) {
-        this.sidenav.close();
-      }
-    });
+    // this.router.events.subscribe(() => {
+    //   if (this.isScreenSmall) {
+    //     this.sidenav.close();
+    //   }
+    // });
   }
 
 }
