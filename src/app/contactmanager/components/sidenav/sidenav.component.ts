@@ -27,7 +27,7 @@ export class SidenavComponent implements OnInit {
     private userService: UserService,
     private router: Router) { }
 
-  @ViewChild(MatSidenav) sidenav: MatSidenav;
+  @ViewChild(MatSidenav) sidenav: MatSidenav; // Add
 
   // toggleTheme() {
   //   this.isDarkTheme = !this.isDarkTheme;
@@ -47,9 +47,11 @@ export class SidenavComponent implements OnInit {
     this.users = this.userService.users;
     this.userService.loadAll();
 
-    this.users.subscribe(
-      data => console.log(data)
-    )
+    this.router.events.subscribe(() => {
+      if(this.isScreenSmall){
+        this.sidenav.close();
+      }
+    })
 
 
     // this.breakpointObserver
