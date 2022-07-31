@@ -17,6 +17,7 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall: boolean;
 
+  users: Observable<User[]>;
   // users: Observable<User[]>;
   // isDarkTheme: boolean = false;
   // dir: string = 'ltr';
@@ -42,6 +43,15 @@ export class SidenavComponent implements OnInit {
     .subscribe((state: BreakpointState)=> {
       this.isScreenSmall = state.matches;
     })
+
+    this.users = this.userService.users;
+    this.userService.loadAll();
+
+    this.users.subscribe(
+      data => console.log(data)
+    )
+
+
     // this.breakpointObserver
     //   .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
     //   .subscribe((state: BreakpointState) => {

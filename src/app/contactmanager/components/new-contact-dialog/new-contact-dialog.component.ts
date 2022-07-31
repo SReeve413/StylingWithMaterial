@@ -11,36 +11,36 @@ import { UserService } from '../../services/user.service';
 })
 export class NewContactDialogComponent implements OnInit {
 
-  avatars = [
-    'svg-1', 'svg-2', 'svg-3', 'svg-4'
-  ];
+  // avatars = [
+  //   'svg-1', 'svg-2', 'svg-3', 'svg-4'
+  // ];
 
-  user: User;
-  constructor(
-    private dialogRef: MatDialogRef<NewContactDialogComponent>,
-    private userService: UserService) { }
+  // user: User;
+  // constructor(
+  //   private dialogRef: MatDialogRef<NewContactDialogComponent>,
+  //   private userService: UserService) { }
 
-  name = new FormControl('', [Validators.required]);
+  // name = new FormControl('', [Validators.required]);
 
-  getErrorMessage() {
-    return this.name.hasError('required') ? 'You must enter a name' : '';
-  }
+  // getErrorMessage() {
+  //   return this.name.hasError('required') ? 'You must enter a name' : '';
+  // }
 
   ngOnInit(): void {
-    this.user = new User();
+    // this.user = new User();
   }
 
-  save() {
-    this.user.name = this.name.value;
+  // save() {
+  //   this.user.name = this.name.value;
 
-    this.userService.addUser(this.user).then(user => {
-      this.dialogRef.close(user);
-    });
-    
-  }
+  //   this.userService.addUser(this.user).then(user => {
+  //     this.dialogRef.close(user);
+  //   });
 
-  dismiss() {
-    this.dialogRef.close(null);
-  }
+  // }
+
+  // dismiss() {
+  //   this.dialogRef.close(null);
+  // }
 
 }
