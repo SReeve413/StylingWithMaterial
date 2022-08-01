@@ -15,6 +15,9 @@ export class NotesComponent implements OnInit, AfterViewInit  {
   @Input() notes: Note[]
   // @Input() notes: Note[];
 
+  displayedColumns: string[] = ['position', 'title', 'date'];
+  dataSource: MatTableDataSource<Note>
+
   // displayedColumns: string[] = ['position', 'title', 'date' ];
   // dataSource: MatTableDataSource<Note>;
 
@@ -29,6 +32,7 @@ export class NotesComponent implements OnInit, AfterViewInit  {
   }
 
   ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<Note>(this.notes);
     // this.dataSource = new MatTableDataSource<Note>(this.notes);
   }
 
