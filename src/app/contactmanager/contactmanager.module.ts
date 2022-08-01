@@ -13,7 +13,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UserService } from './services/user.service'; // add
-import { NotesComponent } from './components/notes/notes.component';
+import { NotesComponent } from './components/notes/notes.component'; //add
 import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
 const routes: Routes = [
