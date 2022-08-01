@@ -28,13 +28,14 @@ export class NotesComponent implements OnInit, AfterViewInit {
   constructor() {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-
+    this.dataSource.sort = this.sort;
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
   }
