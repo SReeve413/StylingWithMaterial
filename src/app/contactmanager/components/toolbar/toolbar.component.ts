@@ -32,7 +32,19 @@ export class ToolbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result )
+      if(result) {
+        this.openSnackBar("Contact Added", "Navigate")
+        .onAction().subscribe(() => {
+          this.router.navigate(['/contactmanager', result.id])
+        })
+      }
     })
+  }
+
+    openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
+      duration: 5000,
+    });
   }
 
   // openAddContactDialog(): void {
