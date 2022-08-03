@@ -7,27 +7,47 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-new-contact-dialog',
   templateUrl: './new-contact-dialog.component.html',
-  styleUrls: ['./new-contact-dialog.component.scss']
+  styleUrls: ['./new-contact-dialog.component.scss'],
 })
 export class NewContactDialogComponent implements OnInit {
-
   // avatars = [
   //   'svg-1', 'svg-2', 'svg-3', 'svg-4'
   // ];
 
-  // user: User;
-  // constructor(
-  //   private dialogRef: MatDialogRef<NewContactDialogComponent>,
-  //   private userService: UserService) { }
+  avatars = [
+    'svg-1', 'svg-2', 'svg-3', 'svg-4'
+  ];
 
-  // name = new FormControl('', [Validators.required]);
+  user: User;
+  // user: User;
+  constructor(
+    private dialogRef: MatDialogRef<NewContactDialogComponent>,
+    private userService: UserService) { }
+
+  name = new FormControl('', [Validators.required]);
+
+  getErrorMessage() {
+    return this.name.hasError('required')? 'You must enter a name': ''
+  }
 
   // getErrorMessage() {
   //   return this.name.hasError('required') ? 'You must enter a name' : '';
   // }
 
   ngOnInit(): void {
-    // this.user = new User();
+    this.user = new User();
+  }
+
+  save() {
+    this.user.name = this.name.value;
+
+    this.userService.addUser(this.user).then(user => {
+      this.dialogRef.close(user)
+    })
+  }
+
+  dismiss() {
+    this.dialogRef.close(null)
   }
 
   // save() {
@@ -42,5 +62,4 @@ export class NewContactDialogComponent implements OnInit {
   // dismiss() {
   //   this.dialogRef.close(null);
   // }
-
 }

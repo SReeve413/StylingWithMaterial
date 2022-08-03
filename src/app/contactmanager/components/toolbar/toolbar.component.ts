@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {1
   }
 
   openAddContactDialog(): void {
