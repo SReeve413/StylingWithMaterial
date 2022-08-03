@@ -19,7 +19,7 @@ export class NotesComponent implements OnInit, AfterViewInit {
   @Input() notes: Note[];
   // @Input() notes: Note[];
 
-  displayedColumns: string[] = ['position', 'title', 'date'];
+  displayedColumns: string[] = ['id', 'title', 'date'];
   dataSource: MatTableDataSource<Note>;
 
   // displayedColumns: string[] = ['position', 'title', 'date' ];
@@ -48,6 +48,7 @@ export class NotesComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.sort);
   }
 
   // applyFilter(event: Event) {
