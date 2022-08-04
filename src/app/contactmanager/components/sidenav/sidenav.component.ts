@@ -1,4 +1,8 @@
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
@@ -11,13 +15,14 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-
   public isScreenSmall: boolean;
 
   users: Observable<User[]>;
+
+  isDarkTheme: boolean = false;
   // users: Observable<User[]>;
   // isDarkTheme: boolean = false;
   // dir: string = 'ltr';
@@ -25,7 +30,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private userService: UserService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   @ViewChild(MatSidenav) sidenav: MatSidenav; // Add
 
@@ -37,22 +43,27 @@ export class SidenavComponent implements OnInit {
   //   this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
   // }
 
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+  }
+
   ngOnInit(): void {
     this.breakpointObserver
-    .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
-    .subscribe((state: BreakpointState)=> {
-      this.isScreenSmall = state.matches;
-    })
+      .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
+      .subscribe((state: BreakpointState) => {
+        this.isScreenSmall = state.matches;
+      });
 
     this.users = this.userService.users;
     this.userService.loadAll();
 
     this.router.events.subscribe(() => {
-      if(this.isScreenSmall){
+      if (this.isScreenSmall) {
         this.sidenav.close();
       }
-    })
+    });
 
+    //
 
     // this.breakpointObserver
     //   .observe([`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
@@ -69,5 +80,4 @@ export class SidenavComponent implements OnInit {
     //   }
     // });
   }
-
 }
