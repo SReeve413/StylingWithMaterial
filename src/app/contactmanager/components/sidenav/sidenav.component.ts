@@ -23,6 +23,8 @@ export class SidenavComponent implements OnInit {
   users: Observable<User[]>;
 
   isDarkTheme: boolean = false;
+  dir: string = 'ltr';
+
   // users: Observable<User[]>;
   // isDarkTheme: boolean = false;
   // dir: string = 'ltr';
@@ -45,6 +47,10 @@ export class SidenavComponent implements OnInit {
 
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
+  }
+
+  toggleDir() {
+    this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
   }
 
   ngOnInit(): void {
